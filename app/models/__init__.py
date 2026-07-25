@@ -3,6 +3,7 @@
 # Package-level SQLAlchemy instance for app/models model modules.
 db = SQLAlchemy()
 
-from .Checkpoint import Checkpoint
-from .Registration import Registration
-from .Vehicle import Vehicle
+from .checkpoint import Checkpoint
+from .vehicle import Vehicle
+from .users import User
+from .checkpoint_logs import CheckpointLog

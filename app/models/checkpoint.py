@@ -1,14 +1,15 @@
-﻿from . import db
+﻿from datetime import datetime
+from . import db
 
 class Checkpoint(db.Model):
-    __tablename__ = "Checkpoint"
+    __tablename__ = "checkpoints"
 
-    CheckpointID = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    CheckpointName = db.Column(db.String(120), nullable=False)
-    Location = db.Column(db.String(200), nullable=True)
-    CourtID = db.Column(db.Integer, db.ForeignKey("Court.CourtID"), nullable=False)
-
-    court = db.relationship("Court", backref="checkpoints")
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    estate_id = db.Column(db.Integer, db.ForeignKey("estates.id"), nullable=False)
+    court_id = db.Column(db.Integer, db.ForeignKey("courts.id"), nullable=True)
+    name = db.Column(db.String(120), nullable=False)
+    type = db.Column(db.String(80), nullable=True)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def __repr__(self):
-        return f"<Checkpoint {self.CheckpointName}>"
+        return f"<Checkpoint {self.name}>"
