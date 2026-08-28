@@ -1,3 +1,8 @@
+from security_officer import SecurityOfficer
+
+__all__ = (
+    "SecurityOfficer",
+)
 ﻿from flask_sqlalchemy import SQLAlchemy
 
 # Package-level SQLAlchemy instance for app/models model modules.
